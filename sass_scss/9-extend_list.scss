@@ -1,13 +1,14 @@
 /* MY STYLES */
-@mixin set-margins($left, $right) {
-  margin-left: $left;
-  margin-right: $right;
+.info {
+  font-size: 12px;
 }
 
-body {
-  @include set-margins(10px, 10px);
+.success {
+  @extend .info;
+  color: #00FF00;
 }
 
-div {
-  @include set-margins(15px, 15px);
+.warning {
+  @extend .info;
+  color: #FF0000;
 }
