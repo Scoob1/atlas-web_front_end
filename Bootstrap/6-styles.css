@@ -1,0 +1,50 @@
+/* 6-styles.css */
+
+/* Primary Button Customization */
+.btn-primary {
+  background-color: #E0003C;
+  border-color: #E0003C;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+  background-color: #BC1340;
+  border-color: #BC1340;
+}
+
+/* Outline Primary Button Customization */
+.btn-outline-primary {
+  color: #E0003C;
+  border-color: #E0003C;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus,
+.btn-outline-primary:active {
+  background-color: rgba(224, 0, 60, 0.1); /* Adds subtle background on hover */
+}
+
+/* Link Customization */
+a {
+  color: #E0003C;
+}
+
+a:hover,
+a:focus {
+  color: #E0003C;
+  text-decoration: underline; /* Optional: Adds underline on hover/focus */
+}
+
+/* Card Customization */
+.card,
+.card-header,
+.card-footer {
+  border-color: #E0003C;
+  border-radius: 1rem;
+}
+
+/* Muted Text Customization */
+.text-muted {
+  color: #8C8C8C !important;
+}
