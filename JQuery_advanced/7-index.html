@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <title>Wikipedia Search</title>
+</head>
+<body>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script type="application/javascript">
+    function createSearchForm() {
+      // Create search bar input
+      var searchBar = $('<input type="text" />');
+      
+      // Create submit button with value "Submit"
+      var submitButton = $('<input type="submit" value="Submit" />');
+      
+      // Event listener for the submit button
+      submitButton.click(function () {
+        queryWikipedia(searchBar.val());
+      });
+      
+      // Append search bar, submit button, and an empty <ul> list
+      $('body').append(searchBar, submitButton, $('<ul></ul>'));
+    }
+
+    function addNewArticle(id, title, snippet) {
+      // Append new list item with ID, title, and snip
+      $('ul').append($(`<li><p><span>${id} - <b>${title}</b></span></p><p>${snippet}</p></li>`));
+    }
+
+    function queryWikipedia(search) {
+      // Make AJAX request to Wikipedia API
+      $.ajax({
+        url: `https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=${search}&format=json`,
+        type: 'GET',
+        dataType: 'jsonp',
+        success: function (data) {
+          // add it to the list
+          data.query.search.forEach(function (results) {
+            addNewArticle(results.pageid, results.title, results.snippet);
+          });
+        }
+      });
+    }
+
+    $(document).ready(function () {
+      createSearchForm();
+    });
+  </script>
+</body>
+</html>
