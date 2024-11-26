@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task 0</title>
+</head>
+
+<body>
+  <script>
+    // Add event listeners after the DOM is loaded
+    document.addEventListener('DOMContentLoaded', function () {
+      document.getElementById('setCookies').addEventListener('click', setCookie);
+      document.getElementById('showCookies').addEventListener('click', showCookies);
+    });
+
+    // Funct set cookies in localStorage
+    function setCookie() {
+      const firstName = document.getElementById('firstname').value;
+      const email = document.getElementById('email').value;
+
+      if (firstName) {
+        localStorage.setItem('firstname', firstName);
+      }
+
+      if (email) {
+        localStorage.setItem('email', email);
+      }
+
+      alert('Cookies wookies set!');
+    }
+
+    function getCookie(name) {
+      return localStorage.getItem(name);
+    }
+
+    function showCookies() {
+      const firstName = getCookie('firstname') || 'Not set';
+      const email = getCookie('email') || 'Not set';
+
+      const paragraph = document.createElement('p');
+      paragraph.textContent = `Cookies: First Name: ${firstName}, Email: ${email}`;
+      document.body.appendChild(paragraph);
+    }
+  </script>
+
+  <!-- task 0 vanilla java -->
+  <h1>Login to the website</h1>
+  <input type="text" id="firstname" placeholder="Firstname">
+  <input type="email" id="email" placeholder="Email">
+  <button id="setCookies">Log me in</button>
+
+  <h1>Cookies</h1>
+  <button id="showCookies">Show the cookies</button>
+</body>
+
+</html>
