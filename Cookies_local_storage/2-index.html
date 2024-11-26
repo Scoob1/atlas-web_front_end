@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Task 1</title>
+  <title>Task 2</title>
 </head>
 
 <body>
@@ -31,7 +31,7 @@
         document.cookie = `email=${encodeURIComponent(email)}; expires=${expires.toUTCString()}; path=/`;
       }
 
-      alert('Cookies set with 10-day expiration!');
+      alert('Cookies set with a 10-day expiration!');
     }
 
     // Funct get value of a specific cookie
@@ -43,21 +43,21 @@
           return decodeURIComponent(value);
         }
       }
-      return null;
+      return "";
     }
 
     // Funct display cookies
     function showCookies() {
-      const firstName = getCookie('firstname') || 'Not set';
-      const email = getCookie('email') || 'Not set';
+      const firstName = getCookie('firstname');
+      const email = getCookie('email');
 
       const paragraph = document.createElement('p');
-      paragraph.textContent = `Cookies: First Name: ${firstName}, Email: ${email}`;
+      paragraph.textContent = `Email: ${email || "Not set"} - Firstname: ${firstName || "Not set"}`;
       document.body.appendChild(paragraph);
     }
   </script>
 
-  <!-- Task 0 vanilla java -->
+  <!-- Task 1 -->
   <h1>Login to the website</h1>
   <input type="text" id="firstname" placeholder="Firstname">
   <input type="email" id="email" placeholder="Email">
