@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping Cart</title>
+  </head>
+  <body>
+    <h1>Welcome to the Store</h1>
+    <div id="store"></div>
+
+    <script>
+      // Array of available items
+      const availableItems = ['Shampoo', 'Soap', 'Sponge', 'Water'];
+
+      // Function to check browser support for localStorage
+      document.addEventListener('DOMContentLoaded', function () {
+        if (typeof Storage === 'undefined') {
+          alert(
+            'Sorry, your browser does not support Web storage. Try again with a better one'
+          );
+          return;
+        }
+
+        // Display the store and cart
+        createStore();
+        displayCart();
+      });
+
+      // Function to add item to the cart
+      function addItemToCart(item) {
+        localStorage.setItem(item, 'true');
+        displayCart(); // Update the cart display after adding an item
+      }
+
+      // Function to create the store and list available items
+      function createStore() {
+        const storeDiv = document.getElementById('store');
+        const ul = document.createElement('ul');
+
+        // Create list items for each product
+        availableItems.forEach((item) => {
+          const li = document.createElement('li');
+          li.textContent = item;
+
+          // Add click event to add item to the cart
+          li.addEventListener('click', () => addItemToCart(item));
+          ul.appendChild(li);
+        });
+
+        storeDiv.appendChild(ul);
+      }
+
+      // Function to display the cart
+      function displayCart() {
+        // Remove existing cart message if present
+        const existingMessage = document.getElementById('cart-message');
+        if (existingMessage) {
+          existingMessage.remove();
+        }
+
+        // Check for items in localStorage
+        const cartItems = Object.keys(localStorage);
+        if (cartItems.length > 0) {
+          const p = document.createElement('p');
+          p.id = 'cart-message';
+          p.textContent = `You previously had ${cartItems.length} items in your cart`;
+          document.body.appendChild(p);
+        }
+      }
+    </script>
+  </body>
+</html>
