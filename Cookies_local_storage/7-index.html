@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Shopping Cart</title>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const availableItems = ['Shampoo', 'Soap', 'Sponge', 'Water'];
+
+      // Check if Session Storage is available
+      if (typeof(Storage) === 'undefined') {
+        alert('Sorry, your browser does not support Web storage. Try again with a better one');
+        return;
+      }
+
+      // Get cart from session storage
+      function getCartFromStorage() {
+        const cart = sessionStorage.getItem('cart');
+        return cart ? JSON.parse(cart) : {}; // Parse string into object or return empty object
+      }
+
+      // Add item to cart
+      function addItemToCart(item) {
+        const cart = getCartFromStorage();
+        if (cart[item]) {
+          cart[item] += 1; // Increase quantity if item is already in cart
+        } else {
+          cart[item] = 1; // Add new item with quantity 1
+        }
+        sessionStorage.setItem('cart', JSON.stringify(cart)); // Store updated cart
+        displayCart(); // Update the cart display
+      }
+
+      // Remove item from cart
+      function removeItemfromCart(item) {
+        const cart = getCartFromStorage();
+        delete cart[item]; // Remove item from cart
+        sessionStorage.setItem('cart', JSON.stringify(cart)); // Store updated cart
+        displayCart(); // Update the cart display
+      }
+
