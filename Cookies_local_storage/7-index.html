@@ -39,4 +39,93 @@
         sessionStorage.setItem('cart', JSON.stringify(cart)); // Store updated cart
         displayCart(); // Update the cart display
       }
+      // Clear the entire cart
+      function clearCart() {
+        sessionStorage.removeItem('cart'); // Clear cart from session storage
+        displayCart(); // Update the cart display
+      }
 
+      // Create the store UI (Available products list)
+      function createStore() {
+        const storeSection = document.getElementById('store');
+        const h2 = document.createElement('h2');
+        h2.textContent = 'Available products:';
+        storeSection.appendChild(h2);
+
+        const ul = document.createElement('ul');
+        availableItems.forEach(item => {
+          const li = document.createElement('li');
+          li.textContent = item;
+          li.addEventListener('click', () => addItemToCart(item)); // Add item to cart on click
+          ul.appendChild(li);
+        });
+        storeSection.appendChild(ul);
+      }
+
+      // Display the cart UI
+      function displayCart() {
+        const cartSection = document.getElementById('cart');
+        cartSection.innerHTML = ''; // Clear the cart section before updating
+
+        const h2 = document.createElement('h2');
+        h2.textContent = 'Your cart:';
+        cartSection.appendChild(h2);
+
+        const div = document.createElement('div');
+        div.id = 'cart-contents';
+        cartSection.appendChild(div);
+
+        updateCart(); // Update the cart contents
+      }
+
+      // Update the cart with current items
+      function updateCart() {
+        const cart = getCartFromStorage();
+        const cartContents = document.getElementById('cart-contents');
+        cartContents.innerHTML = ''; // Clear previous cart items
+
+        const ul = document.createElement('ul');
+
+        // Add "Clear my cart" option if cart is not empty
+        if (Object.keys(cart).length > 0) {
+          const clearLi = document.createElement('li');
+          const clearBtn = document.createElement('button');
+          clearBtn.textContent = 'Clear my cart';
+          clearBtn.addEventListener('click', clearCart); // Call clearCart on click
+          clearLi.appendChild(clearBtn);
+          ul.appendChild(clearLi);
+        }
+
+        // Add items to the cart or show "empty" message
+        if (Object.keys(cart).length === 0) {
+          const li = document.createElement('li');
+          li.textContent = 'Your cart is empty';
+          ul.appendChild(li);
+        } else {
+          for (const item in cart) {
+            const li = document.createElement('li');
+            li.textContent = `${item} x ${cart[item]} `;
+
+            const removeBtn = document.createElement('button');
+            removeBtn.textContent = '(remove)';
+            removeBtn.addEventListener('click', () => removeItemfromCart(item)); // Call removeItemfromCart on click
+            li.appendChild(removeBtn);
+
+            ul.appendChild(li);
+          }
+        }
+
+        cartContents.appendChild(ul);
+      }
+
+      // Initialize the application
+      createStore(); // Create the available products list
+      displayCart(); // Display the cart
+    });
+  </script>
+</head>
+<body>
+  <section id="store"></section> <!-- Available items will be listed here -->
+  <section id="cart"></section> <!-- Cart contents will be displayed here -->
+</body>
+</html>
