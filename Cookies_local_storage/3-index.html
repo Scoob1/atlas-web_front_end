@@ -70,9 +70,11 @@
         // Apply styles to the logout link
         const logoutLink = welcomeMessage.querySelector('a');
         logoutLink.style.fontWeight = 'normal';
+        logoutLink.style.textDecoration = 'none';
         logoutLink.style.fontStyle = 'italic';
-        logoutLink.style.fontSize = '10px';
         logoutLink.style.marginLeft = '10px';
+        logoutLink.style.color = 'inherit';
+        logoutLink.style.cursor = 'pointer';
 
         // Replace the body content with the welcome message
         document.body.innerHTML = '';
