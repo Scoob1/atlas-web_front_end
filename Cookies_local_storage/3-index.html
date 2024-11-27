@@ -65,10 +65,10 @@
         // User is logged in, show welcome message
         const welcomeMessage = document.createElement('h1');
         welcomeMessage.id = 'welcomeMessage';
-        welcomeMessage.innerHTML = `Welcome: ${firstName} <a href="#" onclick="deleteCookiesAndShowForm()">logout</a>`;
+        welcomeMessage.innerHTML = `Welcome: ${firstName} <a href="#" onclick="deleteCookiesAndShowForm()">(logout)</a>`;
 
         // Apply styles to the logout link
-        const logoutLink = welcomeMessage.querySelector('a');
+        const logoutLink = welcomeMessage.querySelector('a')
         logoutLink.style.fontWeight = 'normal';
         logoutLink.style.textDecoration = 'none';
         logoutLink.style.fontStyle = 'italic';
