@@ -2,7 +2,31 @@
 
 This repository contains various **Sass/SCSS** tasks aimed at learning and mastering **Sass features**, including variables, nesting, mixins, loops, and imports.
 
-## Directory Structure
+## SCSS File Structure & Comments
+
+All SCSS files must begin with a comment block:
+```scss
+/* My style */
+body {
+    .container {
+        color: #3D3D3D;
+    }
+}
+
+- To Install Sass
+
+# Install Node.js
+curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+# Update npm
+sudo npm install -g npm@10
+
+# Install Sass
+sudo npm install -g sass@^1.82.0
+
+# Verify installation
+sass --version
 
 
 ## Tasks Overview
