@@ -116,23 +116,14 @@
     font-weight: var(--font-weight-bold);
   }
   
-  a {
-    color: var(--text-color);
-    text-decoration: none;
-  }
-  
-  a:visited {
-    font-style: italic;
-  }
-  
   a:hover {
     text-decoration: underline;
   }
-  
+
   a:active {
     background-color: var(--color-light-grey);
   }
-  
+
   .button {
     display: var(--button-display);
     padding: var(--button-padding);
@@ -149,7 +140,17 @@
     transition-duration: var(--transition-duration);
     transition-property: color, background-color;
   }
-  
+
+  .button-primary {
+    color: var(--color-white);
+    background: var(--color-primary);
+  }
+
+  .button-primary:hover {
+    color: var(--color-primary);
+    background: var(--color-white);
+  }
+
   /* Helpers
       ============================= */
   
