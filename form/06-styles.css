@@ -41,6 +41,17 @@
     --line-height-small: 1.2;
     --line-height-base: 1.5;
     --line-height-big: 1.8;
+
+    --color-dark-grey: #6c757d;
+        --color-red: #cd3e65;
+        --color-green: #08805b;
+        --text-color: #333;
+        --valid-color: var(--color-green);
+        --error-color: var(--color-red);
+
+        /* Custom properties colors */
+       --valid-color: var(--color-green);
+       --error-color: var(--color-red);
   
     /** SECTION **/
     --section-padding: 5rem 0;
